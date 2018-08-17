@@ -1,33 +1,9 @@
 import React from 'react';
-import { Form, Input, Tooltip, Icon, Cascader, Select, Row, Col, Checkbox, Button, AutoComplete } from 'antd';
+import { Form, Input, Button, message } from 'antd';
+import $ from 'jquery';
+import { API_ROOT } from './constants';
 
 const FormItem = Form.Item;
-const Option = Select.Option;
-const AutoCompleteOption = AutoComplete.Option;
-
-const residences = [{
-    value: 'zhejiang',
-    label: 'Zhejiang',
-    children: [{
-        value: 'hangzhou',
-        label: 'Hangzhou',
-        children: [{
-            value: 'xihu',
-            label: 'West Lake',
-        }],
-    }],
-}, {
-    value: 'jiangsu',
-    label: 'Jiangsu',
-    children: [{
-        value: 'nanjing',
-        label: 'Nanjing',
-        children: [{
-            value: 'zhonghuamen',
-            label: 'Zhong Hua Men',
-        }],
-    }],
-}];
 
 class RegistrationForm extends React.Component {
     state = {
@@ -40,6 +16,20 @@ class RegistrationForm extends React.Component {
         this.props.form.validateFieldsAndScroll((err, values) => {
             if (!err) {
                 console.log('Received values of form: ', values);
+                $.ajax({
+                    url: `${API_ROOT}/signup`,
+                    method: 'POST',
+                    data: JSON.stringify({
+                        username: values.username,
+                        password: values.password,
+                    })
+                }).then((response) => {
+                    message.success(response);
+                }, (response) => {
+                    message.error(response.responseText);
+                }).catch((error) => {
+                    console.log(error);
+                });
             }
         });
     }
