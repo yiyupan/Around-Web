@@ -1,0 +1,7 @@
+.register-form {
+    width: 500px;
+    margin: auto;
+    /*also can do below to make form in the middle*/
+    /*margin-left: auto;*/
+    /*margin-right:auto;*/
+}
