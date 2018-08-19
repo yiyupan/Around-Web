@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, Input, Button, message } from 'antd';
 import $ from 'jquery';
 import { API_ROOT } from '../constants';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 const FormItem = Form.Item;
 
@@ -26,6 +26,7 @@ class RegistrationForm extends React.Component {
                     })
                 }).then((response) => {
                     message.success(response);
+                    this.props.history.push('/login');
                 }, (response) => {
                     message.error(response.responseText);
                 }).catch((error) => {
