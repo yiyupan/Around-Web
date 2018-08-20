@@ -18,7 +18,7 @@ class RegistrationForm extends React.Component {
             if (!err) {
                 console.log('Received values of form: ', values);
                 $.ajax({
-                    url: `${API_ROOT}/register`,
+                    url: `${API_ROOT}/signup`,
                     method: 'POST',
                     data: JSON.stringify({
                         username: values.username,
