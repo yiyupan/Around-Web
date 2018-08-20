@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import logo from '../assets/images/logo.svg';
 
 export class Header extends React.Component {

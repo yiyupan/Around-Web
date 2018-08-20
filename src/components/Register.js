@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, Input, Button, message } from 'antd';
 import $ from 'jquery';
 import { API_ROOT } from '../constants';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const FormItem = Form.Item;
 
